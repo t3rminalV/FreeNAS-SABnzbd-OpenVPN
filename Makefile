@@ -6,20 +6,20 @@ install: fix_permissions
 	pkg update
 	pkg fetch -u -y
 	pkg upgrade -y
-	cp ./scripts/rc.d.sh /etc/rc.d/transmissionvpn
+	cp ./scripts/rc.d.sh /etc/rc.d/sabnzbdvpn
 	cp /etc/rc.conf ./rc.conf.backup
 	@clear
-	@echo "In the FreeNAS web interface, please enable and then disable the Transmission plugin (from the Plugins > Installed page)."
+	@echo "In the FreeNAS web interface, please enable and then disable the SABnzbd plugin (from the Plugins > Installed page)."
 	@echo "Press [ENTER] once the plugin is disabled." ; \
 		read userdone
-	if [ "`cat /etc/rc.conf | grep "transmissionvpn_enable" | wc -l`" -lt "1" ] ; then echo "transmissionvpn_enable=\"YES\"" >> /etc/rc.conf ; fi
-	cat /etc/rc.conf | grep -v "transmission_enable" > rc.conf.tmp
+	if [ "`cat /etc/rc.conf | grep "sabnzbdvpn_enable" | wc -l`" -lt "1" ] ; then echo "sabnzbdvpn_enable=\"YES\"" >> /etc/rc.conf ; fi
+	cat /etc/rc.conf | grep -v "sabnzbd_enable" > rc.conf.tmp
 	cat rc.conf.tmp > /etc/rc.conf
 	rm rc.conf.tmp
-	echo "transmission_enable=\"YES\"" >> /etc/rc.conf
-	/usr/local/etc/rc.d/transmission start
+	echo "sabnzbd_enable=\"YES\"" >> /etc/rc.conf
+	/usr/local/etc/rc.d/sabnzbd start
 	sleep 3  # Sometimes, the following stop happens before the process can completely start.
-	/usr/local/etc/rc.d/transmission stop
+	/usr/local/etc/rc.d/sabnzbd stop
 	@clear
 	@echo "Enter your OpenVPN username and press [ENTER]:" ; \
 		read username ; \
@@ -30,10 +30,10 @@ install: fix_permissions
 	@clear
 	@echo -e "\nUsername and password written to the OpenVPN running script, run.sh."
 	@echo -e "PLEASE BE AWARE:  These are written out in plain text.\n\n"
-	@echo "Configuration complete.  OpenVPN has been installed.  It will automatically connect on boot and start Transmision."
+	@echo "Configuration complete.  OpenVPN has been installed.  It will automatically connect on boot and start SABnzbd."
 	@echo "You will still need to download your provider's openvpn.conf and associated keys."
-	@echo "Place openvpn.conf and the keys into ./openvpn.  One this is done, you can launch OpenVPN and Transmission by running:"
-	@echo -e "\n     /etc/rc.d/transmissionvpn start\n\nTo stop Transmission and OpenVPN, run:\n\n     /etc/rc.d/transmissionvpn stop\n\n"
+	@echo "Place openvpn.conf and the keys into ./openvpn.  One this is done, you can launch OpenVPN and SABnzbd by running:"
+	@echo -e "\n     /etc/rc.d/sabnzbdvpn start\n\nTo stop Transmission and OpenVPN, run:\n\n     /etc/rc.d/sabnzbdvpn stop\n\n"
 	@echo "Enjoy!"
 
 fix_permissions:

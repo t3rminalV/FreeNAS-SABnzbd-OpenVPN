@@ -2,18 +2,18 @@
 
 . /etc/rc.subr
 
-name="transmissionvpn"
+name="sabnzbdvpn"
 start_cmd="${name}_start"
 stop_cmd="${name}_stop"
 
-transmissionvpn_start()
+sabnzbdvpn_start()
 {
-    /FreeNAS-Transmission-OpenVPN/run.sh
+    /FreeNAS-SABnzbd-OpenVPN/run.sh
 }
 
-transmissionvpn_stop()
+sabnzbdvpn_stop()
 {
-    /FreeNAS-Transmission-OpenVPN/stop.sh
+    /FreeNAS-SABnzbd-OpenVPN/stop.sh
 }
 
 
