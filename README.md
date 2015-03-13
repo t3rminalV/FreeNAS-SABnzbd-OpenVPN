@@ -1,6 +1,6 @@
 # FreeNAS SABnzbd ⇔ OpenVPN
 
-This repository is a modified version of [amussey/FreeNAS-SABnzbd-OpenVPN](https://github.com/amussey/FreeNAS-SABnzbd-OpenVPN) to use SABnzbd instead of SABnzbd. Many files are the same, including most of this README, so all credit to [amussey](https://github.com/amussey) for the awesome work!
+This repository is a modified version of [amussey/FreeNAS-SABnzbd-OpenVPN](https://github.com/amussey/FreeNAS-Transmission-OpenVPN) to use SABnzbd instead of SABnzbd. Many files are the same, including most of this README, so all credit to [amussey](https://github.com/amussey) for the awesome work!
 
 This guide and the associated scripts will help you secure your SABnzbd client so it only sends traffic through a VPN.  For this particular guide, I'll be showing you how to set up [Private Internet Access](https://www.privateinternetaccess.com) on a [FreeNAS 9.3](http://www.freenas.org) jail, but any VPN service should work about the same, and the guide should be generic enough to apply to any FreeBSD jail.
 
@@ -44,7 +44,7 @@ root@SABnzbd_3:/ # cd /FreeNAS-SABnzbd-OpenVPN
 root@SABnzbd_3:/FreeNAS-SABnzbd-OpenVPN # make
 ```
 
-The setup script will walk you through a coupe additional steps.
+The setup script will walk you through a couple additional steps.
 
 When you've finished these steps, you'll need to copy your `openvpn.conf` and the associated keys into `/FreeNAS-SABnzbd-OpenVPN/openvpn`.  For Private Internet Access, these are available using the following command:
 
